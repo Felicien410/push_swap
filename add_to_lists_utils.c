@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_to_lists_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcatteau <fcatteau@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: feliciencatteau <feliciencatteau@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:03:03 by fcatteau          #+#    #+#             */
-/*   Updated: 2023/03/22 17:01:28 by fcatteau         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:33:38 by feliciencat      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	verif_all(t_stack **first, long long value)
 {
-	verif_integers(value);
+	verif_integers(value, *first);
 	verif_double (*first, value);
 }
 
@@ -67,14 +67,14 @@ void	verif_double(t_stack *lst, long long nb)
 	while (lst)
 	{
 		if (lst->content == nb)
-			ft_put_error();
+			ft_put_error(&lst);
 		lst = lst->next;
 		i++;
 	}
 }
 
-void	verif_integers(long long value)
+void	verif_integers(long long value, t_stack *a)
 {
 	if (value > 2147483647 || value < -2147483648)
-		ft_put_error();
+		ft_put_error(&a);
 }

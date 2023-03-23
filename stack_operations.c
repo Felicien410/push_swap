@@ -12,17 +12,14 @@
 
 #include "push_swap.h"
 
-//Intervertit les 2 premiers éléments au sommet de la pile a.
-//Ne fait rien s’il n’y en a qu’un ou aucun.
 void	sa(t_stack **a)
 {
-	if (ft_lstlen(*a) < 2)
-		return;
-
-	t_stack *elem1;
-	t_stack *elem2;
+	t_stack		*elem1;
+	t_stack		*elem2;
 	long long	tmp;
 
+	if (ft_lstlen(*a) < 2)
+		return ;
 	elem1 = *a;
 	elem2 = elem1->next;
 	tmp = elem1->content;
@@ -32,15 +29,14 @@ void	sa(t_stack **a)
 	return ;
 }
 
-void sb(t_stack **b)
+void	sb(t_stack **b)
 {
-	if (ft_lstlen(*b) < 2)
-	return;
-
-	t_stack *elem1;
-	t_stack *elem2;
+	t_stack		*elem1;
+	t_stack		*elem2;
 	long long	tmp;
 
+	if (ft_lstlen(*b) < 2)
+		return ;
 	elem1 = *b;
 	elem2 = elem1->next;
 	tmp = elem1->content;
@@ -50,15 +46,12 @@ void sb(t_stack **b)
 	return ;
 }
 
-//pa: Prend le premier élément
-// de la pile b et le place en haut de la pile a
-//, si b n'est pas vide.
-void pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b)
 {
+	t_stack	*elem1;
+
 	if (!*b)
-		return;
-	t_stack *elem1;
-	
+		return ;
 	elem1 = *b;
 	*b = (*b)->next;
 	elem1->next = *a;
@@ -66,16 +59,15 @@ void pa(t_stack **a, t_stack **b)
 	ft_putstr_fd ("pa\n", 1);
 }
 
-void pb(t_stack **a, t_stack **b)
+void	pb(t_stack **a, t_stack **b)
 {
+	t_stack	*elem1;
+
 	if (!*a)
-		return;
-	t_stack *elem1;
-	
+		return ;
 	elem1 = *a;
 	*a = (*a)->next;
 	elem1->next = *b;
 	*b = elem1;
 	ft_putstr_fd ("pb\n", 1);
-
 }

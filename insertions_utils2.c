@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 int	cmp(long long first, long long second)
 {
 	if (first > second)
@@ -21,54 +20,53 @@ int	cmp(long long first, long long second)
 		return (0);
 }
 
-int verif_if_any_chunk(t_stack **a,long long chunk)
+int	verif_if_any_chunk(t_stack **a, long long chunk)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *a;
 	while (tmp)
 	{
-		if((tmp)->content < chunk)
+		if ((tmp)->content < chunk)
 			return (1);
 		tmp = tmp->next;
 	}
-	return (0);	
+	return (0);
 }
 
-
-int where_is_start(t_stack *b, long long to_find)
+int	where_is_start(t_stack *b, long long to_find)
 {
-	size_t len_list;
-	size_t i;
-	t_stack *tmp;
+	size_t	len_list;
+	size_t	i;
+	t_stack	*tmp;
 
 	tmp = b;
 	len_list = ft_lstlen(tmp);
 	i = 0;
-	while (i < (len_list/2) && tmp)
+	while (i < (len_list / 2) && tmp)
 	{
 		if (tmp->content == to_find && tmp)
 		{
-			return(0); //si en haut
+			return (0);
 		}
 		i++;
 		tmp = tmp->next;
 	}
-	return (1);	
+	return (1);
 }
 
-void put_on_top (t_stack *longuest, t_stack **b)
+void	put_on_top(t_stack *longuest, t_stack **b)
 {
 	while ((*b)->content != longuest->content)
 	{
-		rb(b);
+		rb (b);
 	}
 }
 
-void put_down (t_stack *longuest, t_stack **b)
+void	put_down(t_stack *longuest, t_stack **b)
 {
-	while (ft_lstlast_ps(*b)->content != longuest->content)
+	while (ft_lstlast_ps (*b)->content != longuest->content)
 	{
-		rrb(b); 
+		rrb (b);
 	}
 }

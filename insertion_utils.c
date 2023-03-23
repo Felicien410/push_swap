@@ -23,11 +23,10 @@ t_stack	*ft_lstlast_ps(t_stack *lst)
 	return (0);
 }
 
-int verif_sort (t_stack *to_sort)
+int	verif_sort(t_stack *to_sort)
 {	
 	while (to_sort && to_sort->next)
 	{
-		//si ce n est pas trie , return 0;
 		if (to_sort->content > to_sort->next->content)
 		{
 			return (0);
@@ -39,8 +38,8 @@ int verif_sort (t_stack *to_sort)
 
 int	how_many_chunck(t_stack *to_sort)
 {
-	int len;
-	
+	int	len;
+
 	len = ft_lstlen (to_sort);
 	if (len < 100)
 		return (7);
@@ -49,33 +48,33 @@ int	how_many_chunck(t_stack *to_sort)
 	return (0);
 }
 
-
-t_stack *extrem(t_stack *to_sort, int i)
+t_stack	*extrem(t_stack *to_sort, int i)
 {
-	t_stack *small;
+	t_stack	*small;
 
 	if (to_sort == NULL || to_sort->next == NULL)
-        return to_sort;
+		return (to_sort);
 	small = to_sort;
 	while (to_sort)
 	{
-		if (cmp (to_sort->content,small->content) == i)
+		if (cmp (to_sort->content, small->content) == i)
 			small = to_sort;
 		to_sort = to_sort->next;
 	}
 	return (small);
 }
 
-t_stack *next_extrem(t_stack *to_sort, int i, long long val)
+t_stack	*next_extrem(t_stack *to_sort, int i, long long val)
 {
-	if (to_sort == NULL || to_sort->next == NULL)
-        return to_sort;
-	t_stack *small;
+	t_stack	*small;
 
+	if (to_sort == NULL || to_sort->next == NULL)
+		return (to_sort);
 	small = to_sort;
 	while (to_sort)
 	{
-		if (cmp(to_sort->content,small->content)==i && to_sort->content < val)
+		if (cmp(to_sort->content, small->content) == i
+			&& to_sort->content < val)
 		{
 			small = to_sort;
 		}

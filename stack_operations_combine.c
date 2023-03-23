@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-void ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b)
 {
-	if (ft_lstlen(*a) < 2 || ft_lstlen(*b) < 2)
-		return;
-	t_stack *elem1;
-	t_stack *elem2;
+	t_stack		*elem1;
+	t_stack		*elem2;
 	long long	tmp;
 
+	if (ft_lstlen(*a) < 2 || ft_lstlen(*b) < 2)
+		return ;
 	elem1 = *a;
 	elem2 = elem1->next;
 	tmp = elem1->content;
@@ -33,39 +33,39 @@ void ss(t_stack **a, t_stack **b)
 	ft_putstr_fd ("ss\n", 1);
 }
 
-void rr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b)
 {
+	t_stack	*elem1;
+	t_stack	*tmp;
+
 	if (!*a || !*b)
-		return;
-	t_stack *elem1;
-	t_stack *tmp;
-	
+		return ;
 	elem1 = *a;
 	*a = (*a)->next;
 	tmp = *a;
-	while (tmp && tmp->next) 
+	while (tmp && tmp->next)
 		tmp = tmp->next;
 	tmp->next = elem1;
 	elem1->next = NULL;
 	elem1 = *b;
 	*b = (*b)->next;
 	tmp = *b;
-	while (tmp && tmp->next) 
+	while (tmp && tmp->next)
 		tmp = tmp->next;
 	tmp->next = elem1;
 	elem1->next = NULL;
 	ft_putstr_fd ("rr\n", 1);
 }
 
-void rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b)
 {
-	if (ft_lstlen(*a) <= 1 || ft_lstlen(*b) <= 1)
-		return;
-	t_stack *tmp;
-	t_stack *bflast;
+	t_stack	*tmp;
+	t_stack	*bflast;
 
+	if (ft_lstlen(*a) <= 1 || ft_lstlen(*b) <= 1)
+		return ;
 	tmp = *a;
-	while (tmp && tmp->next) 
+	while (tmp && tmp->next)
 	{
 		bflast = tmp;
 		tmp = tmp->next;
@@ -73,7 +73,7 @@ void rrr(t_stack **a, t_stack **b)
 	bflast->next = NULL;
 	tmp->next = *a;
 	*a = tmp;
-	while (tmp && tmp->next) 
+	while (tmp && tmp->next)
 	{
 		bflast = tmp;
 		tmp = tmp->next;
